@@ -8,6 +8,8 @@
     tools:context=".MainActivity"
     android:background="#101010">
 
+
+
     <TextView
         android:text="Verificador de face"
         android:layout_width="wrap_content"
