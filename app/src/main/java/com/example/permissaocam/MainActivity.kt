@@ -2,6 +2,7 @@ package com.example.permissaocam
 
 import android.Manifest
 import android.content.ContentValues
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
@@ -31,16 +32,16 @@ class MainActivity : AppCompatActivity() {
     private val cameraPermissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
             if (isGranted) abrirCamera()
-            else Toast.makeText(this, "Permissão da câmera negada!", Toast.LENGTH_SHORT).show()
+            else Toast.makeText(this, "Permissão da câmera negada", Toast.LENGTH_SHORT).show()
         }
 
     private val takePictureLauncher =
         registerForActivityResult(ActivityResultContracts.TakePicture()) { success ->
             if (success) {
                 imgPreview.setImageURI(currentPhotoUri)
-                Toast.makeText(this, "Foto salva na Galeria.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Foto salva na Galeria", Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(this, "Captura cancelada.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Captura cancelada", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -69,7 +70,7 @@ class MainActivity : AppCompatActivity() {
             shouldShowRequestPermissionRationale(Manifest.permission.CAMERA) -> {
                 Toast.makeText(
                     this,
-                    "Precisamos da permissão da câmera para capturar sua foto.",
+                    "Precisamos da permissão da câmera para capturar sua foto",
                     Toast.LENGTH_LONG
                 ).show()
                 cameraPermissionLauncher.launch(Manifest.permission.CAMERA)
@@ -84,11 +85,10 @@ class MainActivity : AppCompatActivity() {
         if (currentPhotoUri != null) {
             takePictureLauncher.launch(currentPhotoUri!!)
         } else {
-            Toast.makeText(this, "Erro ao criar arquivo no MediaStore.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Erro ao criar arquivo na Galeria.", Toast.LENGTH_SHORT).show()
         }
     }
 
-    // Cria URI no MediaStore (salva em Pictures/PermissaoCam)
     private fun criarUriMediaStore(): Uri? {
         val nomeArquivo = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
         val displayName = "IMG_${nomeArquivo}.jpg"
