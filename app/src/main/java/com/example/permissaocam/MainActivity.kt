@@ -30,16 +30,16 @@ class MainActivity : AppCompatActivity() {
     private var currentPhotoUri: Uri? = null
 
     private val cameraPermissionLauncher =
-        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
-            if (isGranted) abrirCamera()
-            else Toast.makeText(this, "Permissão da câmera negada", Toast.LENGTH_SHORT).show()
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) {
+            isGranted -> if (isGranted) abrirCamera()
+            else Toast.makeText(this, "Permissão de câmera negada", Toast.LENGTH_SHORT).show()
         }
 
     private val takePictureLauncher =
-        registerForActivityResult(ActivityResultContracts.TakePicture()) { success ->
-            if (success) {
+        registerForActivityResult(ActivityResultContracts.TakePicture()) {
+            success -> if (success) {
                 imgPreview.setImageURI(currentPhotoUri)
-                Toast.makeText(this, "Foto salva na Galeria", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "A foto foi salva na galeria", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(this, "Captura cancelada", Toast.LENGTH_SHORT).show()
             }
@@ -57,6 +57,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnTirarFoto = findViewById(R.id.BtnTirarFoto)
+
         imgPreview = findViewById(R.id.TvFoto)
 
         btnTirarFoto.setOnClickListener { solicitarPermissaoCamera() }
@@ -70,7 +71,7 @@ class MainActivity : AppCompatActivity() {
             shouldShowRequestPermissionRationale(Manifest.permission.CAMERA) -> {
                 Toast.makeText(
                     this,
-                    "Precisamos da permissão da câmera para capturar sua foto",
+                    "É necessario a permissão da câmera para captura da foto",
                     Toast.LENGTH_LONG
                 ).show()
                 cameraPermissionLauncher.launch(Manifest.permission.CAMERA)
