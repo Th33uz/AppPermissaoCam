@@ -17,6 +17,6 @@ Além disso, o app possui um **ícone temático de câmera**, reforçando a iden
 
 ## 🔧 Tecnologias Utilizadas
 
-- [Kotlin]
-- [Android SDK] 
-- [MediaStore API]
+- Kotlin
+- Android SDK
+- MediaStore API
