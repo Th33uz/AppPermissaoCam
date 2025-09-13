@@ -5,7 +5,7 @@ Além disso, o app possui um **ícone temático de câmera**, reforçando a iden
 
 ---
 
-## ✨ Funcionalidades
+##  ✨ Funcionalidades
 
 - ✅ Solicitação de permissão da câmera em tempo de execução  
 - 📸 Captura de fotos em **alta qualidade** (full-res)  
