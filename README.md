@@ -1,4 +1,4 @@
- # 📸 Verificador de Face
+  # 📸 Verificador de Face
 
 Aplicativo Android desenvolvido em **Kotlin** que solicita a permissão da câmera em tempo real, captura fotos em **alta resolução** e salva diretamente na **Galeria do dispositivo** utilizando a API **MediaStore**.  
 Além disso, o app possui um **ícone temático de câmera**, reforçando a identidade visual do projeto.
